@@ -64,7 +64,7 @@ jobs:
           docker push $IMAGE:latest
 
       - name: Update Docker Hub Description
-        uses: peter-evans/dockerhub-description@v2
+        uses: peter-evans/dockerhub-description@v3
         continue-on-error: true
         with:
           username: ${{ env.DOCKER_USERNAME }}
