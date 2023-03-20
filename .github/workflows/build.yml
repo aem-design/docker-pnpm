@@ -82,7 +82,7 @@ jobs:
           REPO_URL="https://hub.docker.com/v2/repositories/aemdesign/pnpm/"
           curl -vvvL -H "Authorization: JWT ${TOKEN}" -H "Content-Type: application/json" -X PATCH  --data "$README_CONTENT_JSON" ${REPO_URL}
 
-      - uses: meeDamian/github-release@1.0
+      - uses: meeDamian/github-release@2.0
         if: github.ref == 'refs/heads/main'
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
