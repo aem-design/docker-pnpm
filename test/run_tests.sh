@@ -102,6 +102,7 @@ test_usage_node() {
   printLine "Starting Container"
 
   OUTPUT=$(docker run --rm ${IMAGE_NAME} bash --login -c "${COMMAND}")
+#   OUTPUT=$(${COMMAND})
 
   if [[ "$OUTPUT" != *"$CHECK"* ]]; then
       printResult "error"
