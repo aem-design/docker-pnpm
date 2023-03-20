@@ -1,6 +1,6 @@
 ## PNPM
 
-[![build](https://github.com/aem-design/docker-pnpm/actions/workflows/build.yml/badge.svg?branch=jdk11)](https://github.com/aem-design/docker-pnpm/actions/workflows/build.yml)[![github license](https://img.shields.io/github/license/aem-design/docker-pnpm)](https://github.com/aem-design/docker-pnpm)
+[![build](https://github.com/aem-design/docker-pnpm/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/aem-design/docker-pnpm/actions/workflows/build.yml)[![github license](https://img.shields.io/github/license/aem-design/docker-pnpm)](https://github.com/aem-design/docker-pnpm)
 [![github license](https://img.shields.io/github/license/aem-design/docker-pnpm)](https://github.com/aem-design/docker-pnpm)
 [![github issues](https://img.shields.io/github/issues/aem-design/docker-pnpm)](https://github.com/aem-design/docker-pnpm)
 [![github last commit](https://img.shields.io/github/last-commit/aem-design/docker-pnpm)](https://github.com/aem-design/docker-pnpm)
