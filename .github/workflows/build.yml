@@ -63,13 +63,6 @@ jobs:
           docker tag $IMAGE:$GIT_BRANCH $IMAGE:latest
           docker push $IMAGE:latest
 
-      # - name: Update Docker Hub Description
-      #   uses: peter-evans/dockerhub-description@v3
-      #   continue-on-error: true
-      #   with:
-      #     username: ${{ env.DOCKER_USERNAME }}
-      #     password: ${{ env.DOCKER_PASSWORD }}
-      #     repository: peterevans/dockerhub-description
 
       - name: Update Docker Hub Description
         if: github.ref == 'refs/heads/main'
