@@ -63,13 +63,24 @@ jobs:
           docker tag $IMAGE:$GIT_BRANCH $IMAGE:latest
           docker push $IMAGE:latest
 
+      # - name: Update Docker Hub Description
+      #   uses: peter-evans/dockerhub-description@v3
+      #   continue-on-error: true
+      #   with:
+      #     username: ${{ env.DOCKER_USERNAME }}
+      #     password: ${{ env.DOCKER_PASSWORD }}
+      #     repository: peterevans/dockerhub-description
+
       - name: Update Docker Hub Description
-        uses: peter-evans/dockerhub-description@v3
-        continue-on-error: true
-        with:
-          username: ${{ env.DOCKER_USERNAME }}
-          password: ${{ env.DOCKER_PASSWORD }}
-          repository: peterevans/dockerhub-description
+        if: github.ref == 'refs/heads/master'
+        run: |
+          LOGIN_PAYLOAD="{\"username\": \"${DOCKER_USERNAME}\", \"password\": \"${DOCKER_PASSWORD}\"}"
+          TOKEN=$(curl -s -H "Content-Type: application/json" -X POST -d "${LOGIN_PAYLOAD}" https://hub.docker.com/v2/users/login/ | jq -r .token)
+          README_FILEPATH=${README_FILEPATH:="./README.md"}
+          README_CONTENT=$(cat $README_FILEPATH)
+          README_CONTENT_JSON=$(jq -n --arg CONTENT $README_CONTENT '{"full_description": "\($CONTENT)"}' )
+          REPO_URL="https://hub.docker.com/v2/repositories/aemdesign/pnpm/"
+          curl -vvvL -H "Authorization: JWT ${TOKEN}" -H "Content-Type: application/json" -X PATCH  --data "$README_CONTENT_JSON" ${REPO_URL}
 
       - uses: meeDamian/github-release@1.0
         if: github.ref == 'refs/heads/master'
